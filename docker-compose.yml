@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  backend:
+    build:
+      context: ./task-backend
+      dockerfile: Dockerfile
+    container_name: task-backend
+    ports:
+      - "8080:8080"    
+    networks:
+      - coopeuch
+networks:
+  coopeuch:
+    driver: bridge
