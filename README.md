@@ -19,7 +19,7 @@ npm start
 
 
 
-#Run with docker
+#Run with docker compose
 ```
 cd test-backend
 mvn clean package
