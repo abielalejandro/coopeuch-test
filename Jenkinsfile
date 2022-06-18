@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build Backend') { 
             steps {
-                withMaven(maven: 'mvn') {
+                withMaven {
                     sh '''
                        cd task-backend
                        mvn -B -DskipTests clean package
