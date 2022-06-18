@@ -4,7 +4,10 @@ pipeline {
         stage('Build Backend') { 
             steps {
                 dir('task-backend') {
-                   sh 'mvn -B -DskipTests clean package' 
+                    withMaven(maven: 'mvn') {
+                        sh 'mvn -B -DskipTests clean package' 
+                    } 
+                   
                 }
             }
         }
