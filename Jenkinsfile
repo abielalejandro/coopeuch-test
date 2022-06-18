@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build Backend') { 
             steps {
-                dir('task-backend') {
-                    withMaven(maven: 'mvn') {
-                        sh 'mvn -B -DskipTests clean package' 
-                    } 
-                   
-                }
+                withMaven(maven: 'mvn') {
+                    sh '''
+                       cd task-backend
+                       mvn -B -DskipTests clean package
+                    ''' 
+                } 
             }
         }
     }
