@@ -1,8 +1,5 @@
 pipeline {
-    agent any
-    stages {
-        stage('Build Backend') {
-            agent {
+    agent {
                 docker {
                     image 'maven:3.8.1-adoptopenjdk-11'
                     // Run the container on the node specified at the
@@ -10,7 +7,14 @@ pipeline {
                     // rather than on a new node entirely:
                     reuseNode true
                 }
-            }            
+            }  
+    stages {
+        stage('Initialize'){
+            def dockerHome = tool 'DockerClient'
+            env.PATH = "${dockerHome}/bin:${env.PATH}"
+        }        
+        stage('Build Backend') {
+                      
             steps {
                     sh '''
                        cd task-backend
