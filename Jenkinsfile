@@ -11,8 +11,10 @@ pipeline {
     stages {  
        stage('Initialize'){
             steps {
-                def dockerHome = tool 'DockerClient'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"                
+                script {
+                   def dockerHome = tool 'DockerClient'
+                   env.PATH = "${dockerHome}/bin:${env.PATH}"  
+                }              
             }
         }        
         stage('Build Backend') {        
