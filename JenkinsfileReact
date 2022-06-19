@@ -5,7 +5,7 @@ pipeline {
      stages {
         stage("Build") {
             steps {
-                sh "cd task_frontend"
+                sh "cd task-frontend"
                 sh "sudo npm install"
                 sh "sudo npm run build"
             }
