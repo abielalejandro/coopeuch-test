@@ -8,13 +8,10 @@ pipeline {
                     reuseNode true
                 }
             }  
-    stages {
-        stage('Initialize'){
-            def dockerHome = tool 'DockerClient'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }        
+    stages {      
         stage('Build Backend') {
-                      
+            def dockerHome = tool 'DockerClient'
+            env.PATH = "${dockerHome}/bin:${env.PATH}"          
             steps {
                     sh '''
                        cd task-backend
