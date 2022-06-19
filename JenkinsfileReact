@@ -1,0 +1,14 @@
+pipeline {
+     agent {
+        docker { image 'node:16.13.1-alpine' }
+     }
+     stages {
+        stage("Build") {
+            steps {
+                sh "cd task_frontend"
+                sh "sudo npm install"
+                sh "sudo npm run build"
+            }
+        }        
+    }
+}
