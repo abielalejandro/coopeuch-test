@@ -8,17 +8,13 @@ pipeline {
                     reuseNode true
                 }
             }  
-    stages {  
-       stage('Initialize'){
+    stages {     
+        stage('Build Backend') {        
             steps {
                 script {
                    def dockerHome = tool 'DockerClient'
                    env.PATH = "${dockerHome}/bin:${env.PATH}"  
-                }              
-            }
-        }        
-        stage('Build Backend') {        
-            steps {
+                }  
                     sh '''
                        cd task-backend
                        mvn -B -DskipTests clean package
